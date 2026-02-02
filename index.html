@@ -1,0 +1,586 @@
+<meta name='viewport' content='width=device-width, initial-scale=1'/><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: 'Comic Sans MS', cursive;
+        background: radial-gradient(circle, #ffdee9, #b5fffc);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: #d63384;
+        padding: 0 10px;
+    }
+
+    button {
+        padding: 14px 30px;
+        font-size: 16px;
+        border: none;
+        border-radius: 30px;
+        margin: 15px;
+        cursor: pointer;
+    }
+
+    #yes {
+        background: #28a745;
+        color: white;
+    }
+
+    #no {
+        background: #dc3545;
+        color: white;
+        position: absolute;
+    }
+
+    .celebration {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle, #ff758c, #ff7eb3);
+        color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .celebration h2 {
+        font-size: 2.2rem;
+    }
+
+    .celebration p {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .slideshow {
+        width: 70vw;
+        max-width: 260px;
+        height: 70vw;
+        max-height: 260px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(255,255,255,0.7);
+    }
+
+    .slideshow img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .heart {
+        position: fixed;
+        bottom: -20px;
+        font-size: 18px;
+        animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+        from { transform: translateY(0); opacity: 1; }
+        to { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    .firework {
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        animation: explode 1s ease-out forwards;
+    }
+
+    @keyframes explode {
+        100% {
+            box-shadow:
+                0 -180px red,
+                130px -130px gold,
+                180px 0 cyan,
+                130px 130px pink,
+                0 180px purple,
+                -130px 130px orange,
+                -180px 0 lime,
+                -130px -130px blue;
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+</head>
+
+<body>
+
+<div id="questionBox">
+    <h1>Will you be my Valentine? 💘</h1>
+    <button id="yes">YES 😍</button>
+    <button id="no">NO 🙄</button>
+</div>
+
+<div class="celebration" id="celebration">
+    <h2>🎉 Yay…!!! Best decision ever 🎉</h2>
+    <p>Wish you a happiest <b>8th Anniversary</b> 🥰❤️</p>
+
+    <div class="slideshow">
+        <img id="slide" src="photo1.jpg">
+    </div>
+</div>
+
+<audio id="music" src="love.mp3" loop></audio>
+
+<script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const celebration = document.getElementById("celebration");
+    const questionBox = document.getElementById("questionBox");
+    const music = document.getElementById("music");
+    const photos = ["photo1.jpg","photo2.jpg","photo3.jpg"];
+    let index = 0;
+
+    noBtn.addEventListener("touchstart", moveNo);
+    noBtn.addEventListener("mouseover", moveNo);
+
+    function moveNo() {
+        noBtn.style.left = Math.random() * (window.innerWidth - 80) + "px";
+        noBtn.style.top = Math.random() * (window.innerHeight - 80) + "px";
+    }
+
+    yesBtn.onclick = () => {
+        questionBox.style.display = "none";
+        celebration.style.display = "flex";
+        music.play();
+
+        setInterval(() => {
+            index = (index + 1) % photos.length;
+            document.getElementById("slide").src = photos[index];
+        }, 2500);
+
+        setInterval(createHeart, 300);
+        for (let i = 0; i < 6; i++) createFirework();
+    };
+
+    function createHeart() {
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.innerHTML = "❤️";
+        h.style.left = Math.random() * window.innerWidth + "px";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 6000);
+    }
+
+    function createFirework() {
+        const f = document.createElement("div");
+        f.className = "firework";
+        f.style.left = Math.random() * window.innerWidth + "px";
+        f.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(f);
+        setTimeout(() => f.remove(), 1000);
+    }
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: 'Comic Sans MS', cursive;
+        background: radial-gradient(circle, #ffdee9, #b5fffc);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: #d63384;
+        padding: 0 10px;
+    }
+
+    button {
+        padding: 14px 30px;
+        font-size: 16px;
+        border: none;
+        border-radius: 30px;
+        margin: 15px;
+        cursor: pointer;
+    }
+
+    #yes {
+        background: #28a745;
+        color: white;
+    }
+
+    #no {
+        background: #dc3545;
+        color: white;
+        position: absolute;
+    }
+
+    .celebration {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle, #ff758c, #ff7eb3);
+        color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .celebration h2 {
+        font-size: 2.2rem;
+    }
+
+    .celebration p {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .slideshow {
+        width: 70vw;
+        max-width: 260px;
+        height: 70vw;
+        max-height: 260px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(255,255,255,0.7);
+    }
+
+    .slideshow img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .heart {
+        position: fixed;
+        bottom: -20px;
+        font-size: 18px;
+        animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+        from { transform: translateY(0); opacity: 1; }
+        to { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    .firework {
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        animation: explode 1s ease-out forwards;
+    }
+
+    @keyframes explode {
+        100% {
+            box-shadow:
+                0 -180px red,
+                130px -130px gold,
+                180px 0 cyan,
+                130px 130px pink,
+                0 180px purple,
+                -130px 130px orange,
+                -180px 0 lime,
+                -130px -130px blue;
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+</head>
+
+<body>
+
+<div id="questionBox">
+    <h1>Will you be my Valentine? 💘</h1>
+    <button id="yes">YES 😍</button>
+    <button id="no">NO 🙄</button>
+</div>
+
+<div class="celebration" id="celebration">
+    <h2>🎉 Yay…!!! Best decision ever 🎉</h2>
+    <p>Wish you a happiest <b>8th Anniversary</b> 🥰❤️</p>
+
+    <div class="slideshow">
+        <img id="slide" src="photo1.jpg">
+    </div>
+</div>
+
+<audio id="music" src="love.mp3" loop></audio>
+
+<script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const celebration = document.getElementById("celebration");
+    const questionBox = document.getElementById("questionBox");
+    const music = document.getElementById("music");
+    const photos = ["photo1.jpg","photo2.jpg","photo3.jpg"];
+    let index = 0;
+
+    noBtn.addEventListener("touchstart", moveNo);
+    noBtn.addEventListener("mouseover", moveNo);
+
+    function moveNo() {
+        noBtn.style.left = Math.random() * (window.innerWidth - 80) + "px";
+        noBtn.style.top = Math.random() * (window.innerHeight - 80) + "px";
+    }
+
+    yesBtn.onclick = () => {
+        questionBox.style.display = "none";
+        celebration.style.display = "flex";
+        music.play();
+
+        setInterval(() => {
+            index = (index + 1) % photos.length;
+            document.getElementById("slide").src = photos[index];
+        }, 2500);
+
+        setInterval(createHeart, 300);
+        for (let i = 0; i < 6; i++) createFirework();
+    };
+
+    function createHeart() {
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.innerHTML = "❤️";
+        h.style.left = Math.random() * window.innerWidth + "px";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 6000);
+    }
+
+    function createFirework() {
+        const f = document.createElement("div");
+        f.className = "firework";
+        f.style.left = Math.random() * window.innerWidth + "px";
+        f.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(f);
+        setTimeout(() => f.remove(), 1000);
+    }
+</script>
+
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Valentine ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        height: 100vh;
+        font-family: 'Comic Sans MS', cursive;
+        background: radial-gradient(circle, #ffdee9, #b5fffc);
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 2rem;
+        color: #d63384;
+        padding: 0 10px;
+    }
+
+    button {
+        padding: 14px 30px;
+        font-size: 16px;
+        border: none;
+        border-radius: 30px;
+        margin: 15px;
+        cursor: pointer;
+    }
+
+    #yes {
+        background: #28a745;
+        color: white;
+    }
+
+    #no {
+        background: #dc3545;
+        color: white;
+        position: absolute;
+    }
+
+    .celebration {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(circle, #ff758c, #ff7eb3);
+        color: white;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+    .celebration h2 {
+        font-size: 2.2rem;
+    }
+
+    .celebration p {
+        font-size: 1.4rem;
+        margin-bottom: 15px;
+    }
+
+    .slideshow {
+        width: 70vw;
+        max-width: 260px;
+        height: 70vw;
+        max-height: 260px;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(255,255,255,0.7);
+    }
+
+    .slideshow img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .heart {
+        position: fixed;
+        bottom: -20px;
+        font-size: 18px;
+        animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+        from { transform: translateY(0); opacity: 1; }
+        to { transform: translateY(-110vh); opacity: 0; }
+    }
+
+    .firework {
+        position: fixed;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        animation: explode 1s ease-out forwards;
+    }
+
+    @keyframes explode {
+        100% {
+            box-shadow:
+                0 -180px red,
+                130px -130px gold,
+                180px 0 cyan,
+                130px 130px pink,
+                0 180px purple,
+                -130px 130px orange,
+                -180px 0 lime,
+                -130px -130px blue;
+        }
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+</style>
+</head>
+
+<body>
+
+<div id="questionBox">
+    <h1>Will you be my Valentine? 💘</h1>
+    <button id="yes">YES 😍</button>
+    <button id="no">NO 🙄</button>
+</div>
+
+<div class="celebration" id="celebration">
+    <h2>🎉 Yay…!!! Best decision ever 🎉</h2>
+    <p>Wish you a happiest <b>8th Anniversary</b> 🥰❤️</p>
+
+    <div class="slideshow">
+        <img id="slide" src="photo1.jpg">
+    </div>
+</div>
+
+<audio id="music" src="love.mp3" loop></audio>
+
+<script>
+    const noBtn = document.getElementById("no");
+    const yesBtn = document.getElementById("yes");
+    const celebration = document.getElementById("celebration");
+    const questionBox = document.getElementById("questionBox");
+    const music = document.getElementById("music");
+    const photos = ["photo1.jpg","photo2.jpg","photo3.jpg"];
+    let index = 0;
+
+    noBtn.addEventListener("touchstart", moveNo);
+    noBtn.addEventListener("mouseover", moveNo);
+
+    function moveNo() {
+        noBtn.style.left = Math.random() * (window.innerWidth - 80) + "px";
+        noBtn.style.top = Math.random() * (window.innerHeight - 80) + "px";
+    }
+
+    yesBtn.onclick = () => {
+        questionBox.style.display = "none";
+        celebration.style.display = "flex";
+        music.play();
+
+        setInterval(() => {
+            index = (index + 1) % photos.length;
+            document.getElementById("slide").src = photos[index];
+        }, 2500);
+
+        setInterval(createHeart, 300);
+        for (let i = 0; i < 6; i++) createFirework();
+    };
+
+    function createHeart() {
+        const h = document.createElement("div");
+        h.className = "heart";
+        h.innerHTML = "❤️";
+        h.style.left = Math.random() * window.innerWidth + "px";
+        document.body.appendChild(h);
+        setTimeout(() => h.remove(), 6000);
+    }
+
+    function createFirework() {
+        const f = document.createElement("div");
+        f.className = "firework";
+        f.style.left = Math.random() * window.innerWidth + "px";
+        f.style.top = Math.random() * window.innerHeight + "px";
+        document.body.appendChild(f);
+        setTimeout(() => f.remove(), 1000);
+    }
+</script>
+
+</body>
+</html>
